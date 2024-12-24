@@ -32,6 +32,9 @@ jobs:
         id
         uname -a
         cat /etc/os-release
+
+        apt-get update
+        curl icanhazip.com
         
         EOF
         ) > ./script.sh
