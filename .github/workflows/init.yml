@@ -11,7 +11,7 @@ jobs:
     - name: DoSomething
       run: |
         sudo apt-get update -yqq
-        sudo apt-get install -y qemu-system-x86-64 qemu-guest-agent ovmf mmdebstrap
+        sudo apt-get install -y qemu-system-x86-64 qemu-guest-agent ovmf mmdebstrap debian-archive-keyring
         echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
         sudo udevadm control --reload-rules
         sudo udevadm trigger --name-match=kvm
