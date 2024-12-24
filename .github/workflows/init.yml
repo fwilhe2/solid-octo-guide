@@ -20,4 +20,4 @@ jobs:
         /usr/local/bin/vmtest --help
         wget -q https://github.com/danobi/vmtest/releases/download/test_assets/bzImage-v6.6-default
         mmdebstrap sid ./sid --include=neofetch,curl
-        vmtest --kernel ./bzImage-v6.6-default --rootfs ./sid "uname -r; cat /etc/os-release; neofetch"
+        sudo vmtest --kernel ./bzImage-v6.6-default --rootfs ./sid "uname -r; cat /etc/os-release; neofetch"
