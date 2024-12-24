@@ -34,8 +34,9 @@ jobs:
         cat /etc/os-release
         
         EOF
-        ) > ./sid/script.sh
+        ) > ./script.sh
 
-        chmod a+x ./sid/script.sh
+        sudo mv script.sh ./sid/script.sh
+        sudo chmod a+x ./sid/script.sh
         
         vmtest --kernel ./bzImage-v6.6-default --rootfs ./sid /script.sh
