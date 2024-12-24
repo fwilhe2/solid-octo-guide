@@ -23,11 +23,12 @@ jobs:
 
     - name: Run vmtest
       run: |
+        set -x
 
-        read -r -d '' SCRIPT << EOM
+        SCRIPT="        
         id
         uname -a
         cat /etc/os-release
-        EOM
+        "
 
         vmtest --kernel ./bzImage-v6.6-default --rootfs ./sid $SCRIPT
