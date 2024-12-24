@@ -26,4 +26,4 @@ jobs:
         set -x
 
         SCRIPT="id; uname -a; cat /etc/os-release"
-        vmtest --kernel ./bzImage-v6.6-default --rootfs ./sid $SCRIPT
+        vmtest --kernel ./bzImage-v6.6-default --rootfs ./sid $"SCRIPT"
