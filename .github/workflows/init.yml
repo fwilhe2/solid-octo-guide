@@ -26,8 +26,8 @@ jobs:
         set -x
 
         SCRIPT="        
-        id
-        uname -a
+        id;
+        uname -a;
         cat /etc/os-release
         "
 
