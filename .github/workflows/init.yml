@@ -42,4 +42,4 @@ jobs:
         sudo mv script.sh ./sid/script.sh
         sudo chmod a+x ./sid/script.sh
         
-        vmtest --kernel ./bzImage-v6.6-default --rootfs ./sid /script.sh
+        sudo vmtest --kernel ./bzImage-v6.6-default --rootfs ./sid /script.sh
