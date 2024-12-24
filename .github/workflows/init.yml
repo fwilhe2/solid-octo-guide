@@ -13,3 +13,6 @@ jobs:
         echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
         sudo udevadm control --reload-rules
         sudo udevadm trigger --name-match=kvm
+        sudo wget --output-document /usr/local/bin/vmtest https://github.com/danobi/vmtest/releases/download/v0.17.0/vmtest-x86_64
+        sudo chmod a+x /usr/local/bin/vmtest
+        /usr/local/bin/vmtest --help
