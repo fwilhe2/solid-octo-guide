@@ -20,6 +20,7 @@ jobs:
         /usr/local/bin/vmtest --help
         wget -q https://github.com/danobi/vmtest/releases/download/test_assets/bzImage-v6.6-default
         sudo mmdebstrap sid ./sid --include=neofetch,curl,qemu-guest-agent
+        sudo cp /etc/resolv.conf ./sid/etc/resolv.conf
 
     - name: Run vmtest
       run: |
