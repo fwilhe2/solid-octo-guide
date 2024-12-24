@@ -16,3 +16,5 @@ jobs:
         sudo wget --output-document /usr/local/bin/vmtest https://github.com/danobi/vmtest/releases/download/v0.17.0/vmtest-x86_64
         sudo chmod a+x /usr/local/bin/vmtest
         /usr/local/bin/vmtest --help
+        wget https://github.com/danobi/vmtest/releases/download/test_assets/bzImage-v6.2-empty
+        vmtest -k ./bzImage-v6.2-empty "uname -r"
