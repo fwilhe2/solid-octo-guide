@@ -24,9 +24,18 @@ jobs:
     - name: Run vmtest
       run: |
         set -x
-
-        SCRIPT="id;
-        uname -a;
-        cat /etc/os-release"
         
-        vmtest --kernel ./bzImage-v6.6-default --rootfs ./sid "$SCRIPT"
+        (
+        cat <<'EOF'
+        #!/bin/bash
+        
+        id
+        uname -a
+        cat /etc/os-release
+        
+        EOF
+        ) > ./sid/script.sh
+
+        chmod a+x ./sid/script.sh
+        
+        vmtest --kernel ./bzImage-v6.6-default --rootfs ./sid /script.sh
