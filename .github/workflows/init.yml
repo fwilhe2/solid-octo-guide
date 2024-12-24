@@ -34,8 +34,8 @@ jobs:
         uname -a
         cat /etc/os-release
 
-        apt-get update
-        curl icanhazip.com
+        ip a
+        ping 8.8.8.8
         
         EOF
         ) > ./script.sh
