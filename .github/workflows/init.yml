@@ -11,7 +11,7 @@ jobs:
     - name: DoSomething
       run: |
         sudo apt-get update -yqq
-        sudo apt-get install -y qemu-system-x86-64 qemu-guest-agent ovmf
+        sudo apt-get install -y qemu-system-x86-64 qemu-guest-agent ovmf mmdebstrap
         echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
         sudo udevadm control --reload-rules
         sudo udevadm trigger --name-match=kvm
@@ -19,4 +19,5 @@ jobs:
         sudo chmod a+x /usr/local/bin/vmtest
         /usr/local/bin/vmtest --help
         wget -q https://github.com/danobi/vmtest/releases/download/test_assets/bzImage-v6.6-default
-        vmtest -k ./bzImage-v6.6-default "uname -r"
+        mmdebstrap sid ./sid --include=neofetch,curl
+        vmtest --kernel ./bzImage-v6.6-default --rootfs ./sid "uname -r; cat /etc/os-release; neofetch"
