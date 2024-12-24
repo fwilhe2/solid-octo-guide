@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: DoSomething
+    - name: Setup
       run: |
         sudo apt-get update -yqq
         sudo apt-get install -y qemu-system-x86-64 qemu-guest-agent ovmf mmdebstrap debian-archive-keyring
@@ -20,4 +20,14 @@ jobs:
         /usr/local/bin/vmtest --help
         wget -q https://github.com/danobi/vmtest/releases/download/test_assets/bzImage-v6.6-default
         sudo mmdebstrap sid ./sid --include=neofetch,curl,qemu-guest-agent
-        vmtest --kernel ./bzImage-v6.6-default --rootfs ./sid "uname -r; cat /etc/os-release; neofetch"
+
+    - name: Run vmtest
+      run: |
+
+        read -r -d '' SCRIPT << EOM
+        id
+        uname -a
+        cat /etc/os-release
+        EOM
+
+        vmtest --kernel ./bzImage-v6.6-default --rootfs ./sid $SCRIPT
